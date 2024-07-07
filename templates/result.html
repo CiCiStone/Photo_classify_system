@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预测结果</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="result-container image-container">
+                    <img src="{{ url_for('static', filename='uploads/' ~ filename) }}" class="result-img" alt="上传的图片">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="result-container result-info">
+                    <h2>预测结果</h2>
+                    <div class="result-section">
+                        <p><strong>类别:</strong> {{ class_name }}</p>
+                    </div>
+                    <div class="result-section">
+                        <p><strong>置信度:</strong> {{ confidence }}</p>
+                    </div>
+                    <div class="result-section">
+                        <p><strong>描述:</strong></p>
+                        <p>{{ description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

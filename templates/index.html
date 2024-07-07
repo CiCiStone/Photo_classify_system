@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图像分类器</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="centered">
+        <div class="welcome-container">
+            <h1 class="display-4">欢迎使用图像分类器</h1>
+            <a class="btn btn-primary m-3" href="{{ url_for('login') }}">登录</a>
+            <a class="btn btn-secondary m-3" href="{{ url_for('register') }}">注册</a>
+        </div>
+    </div>
+</body>
+</html>
