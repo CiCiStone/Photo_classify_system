@@ -1,0 +1,2 @@
+# Photo_classify_system
+一个基于Resnet的图像分类系统，基于python的flask，sqlite，torch等包
