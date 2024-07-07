@@ -8,12 +8,13 @@ from tqdm import tqdm
 
 # from model import resnet50
 def get_raw_model(out_future):
-    model = resnet50()
+    model = models.resnet50(pretrained=True)
     return model
 
-def get_pretrained_model(out_future, pt_path):
+def get_pretrained_model(out_future, pt_path=""):
     model = get_raw_model(out_future)
-    model.load_state_dict(torch.load(pt_path))
+    if pt_path:
+        model.load_state_dict(torch.load(pt_path))
     model.fc = nn.Linear(model.fc.in_features, out_future)
     return model
 
@@ -71,7 +72,7 @@ def main():
     # 进行分布式训练
     # torch.distributed.init_process_group(backend='nccl', init_method='tcp://localhost:6666', rank=0, world_size=1)
     # net = nn.parallel.DistributedDataParallel(net)
-    net = get_pretrained_model(10, "./models/resnet50-19c8e357.pth")
+    net = get_pretrained_model(10)
     loss_function = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr=0.002, weight_decay=0.00005, momentum=0.9)
     epochs = 90
